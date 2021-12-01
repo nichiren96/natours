@@ -8,6 +8,10 @@ router
     .get(toursController.aliasTopTours, toursController.getAllTours)
 
 router
+    .route('/tour-stats')
+    .get(toursController.getTourStats)
+    
+router
     .route('/')
     .get(toursController.getAllTours)
     .post(toursController.createTour)
