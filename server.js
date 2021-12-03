@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 dotenv.config({ path: "./.env" });
 
-const server = require("./src/app");
+const app = require("./src/app");
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -16,4 +16,14 @@ mongoose
 
 const port = process.env.PORT;
 
-server.listen(port, () => console.log(`Server listening on port ${port}...`));
+const server = app.listen(port, () =>
+  console.log(`Server listening on port ${port}...`)
+);
+
+process.on("unhandledRejection", (err) => {
+  console.log(err.name, err.message);
+  console.log("UNHANDLE REJECTION!! Shutting down...");
+  server.close(() => {
+    process.exit(1);
+  });
+});
