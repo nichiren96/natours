@@ -15,3 +15,4 @@ This is a REST API for a fictional travel company
 - Authentication and Authorization
 - Sending Email
 - Error Handling
+- Rate Limiting to prevent bruteforce and DDoS attack
