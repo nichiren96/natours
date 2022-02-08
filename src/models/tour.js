@@ -124,11 +124,13 @@ tourSchema.pre("save", function (next) {
   next();
 });
 
-/* tourSchema.pre("save", async function (next) {
-  const guidesPromises = this.guides.map(async (id) => await User.findById(id));
-  this.guides = await Promise.all(guidesPromises);
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "guides",
+    select: "-__v -passwordChangeAt",
+  });
   next();
-}); */
+});
 
 tourSchema.virtual("durationWeeks").get(function () {
   return this.duration / 7;

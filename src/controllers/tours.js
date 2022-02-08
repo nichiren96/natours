@@ -14,8 +14,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
   const queryParser = new QueryParser(Tour.find(), req.query)
     .filter()
     .sort()
-    .limitFields()
-    .paginate();
+    .limitFields();
 
   const tours = await queryParser.query;
 
@@ -59,7 +58,7 @@ exports.updateTour = catchAsync(async (req, res, next) => {
     req.body,
     { new: true, runValidators: true }
   );
-  if (!tour) {
+  if (!updatedTour) {
     return next(new AppError("No tour found with that ID", 404));
   }
   res.status(200).json({
