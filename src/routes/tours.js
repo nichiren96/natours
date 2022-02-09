@@ -5,7 +5,7 @@ const reviewRouter = require("../routes/reviews");
 
 const router = express.Router();
 
-router.use("/:id/reviews", reviewRouter);
+router.use("/:tourId/reviews", reviewRouter);
 
 router
   .route("/top-5-cheap")

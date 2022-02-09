@@ -90,18 +90,7 @@ exports.createUser = (req, res) => {
   }
 };
 
-exports.updateUser = (req, res) => {
-  try {
-    res.status(200).json({
-      status: "success",
-      message: "Not yet implemented",
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      message: err,
-    });
-  }
-};
+// Do NOT update passwords with this
+exports.updateUser = factory.updateOne(User);
 
 exports.deleteUser = factory.deleteOne(User);
