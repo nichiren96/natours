@@ -5,7 +5,7 @@ const reviewRouter = require("../routes/reviews");
 
 const router = express.Router();
 
-router.use("/:tourId/reviews", reviewRouter);
+router.use("/:id/reviews", reviewRouter);
 
 router
   .route("/top-5-cheap")
@@ -20,7 +20,7 @@ router
   .post(toursController.createTour);
 
 router
-  .route("/:tourId")
+  .route("/:id")
   .get(toursController.getTour)
   .patch(toursController.updateTour)
   .delete(
