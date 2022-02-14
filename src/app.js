@@ -66,6 +66,14 @@ app.get("/", (req, res) => {
   res.status(200).render("base", { tour: "Baobab Tour", user: "Andy" });
 });
 
+app.get("/overview", (req, res) => {
+  res.status(200).render("overview", { title: "All tours" });
+});
+
+app.get("/tour", (req, res) => {
+  res.status(200).render("tour", { title: "Baobab Tours" });
+});
+
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
