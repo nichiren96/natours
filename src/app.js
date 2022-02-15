@@ -20,7 +20,14 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 // GLOBAL MIDDLEWARES
-
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src  'self' api.mapbox.com",
+    "script-src-elem 'self' api.mapbox.com"
+  );
+  next();
+});
 // Serving static files
 app.use(express.static(path.join(__dirname, "../public")));
 
